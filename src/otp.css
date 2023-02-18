@@ -1,0 +1,13 @@
+.fields {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.container {
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    column-gap: 0.5rem;
+    width: min-content;
+    flex: 0;
+}
