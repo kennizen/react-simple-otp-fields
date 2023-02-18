@@ -1,5 +1,5 @@
 import { DetailedHTMLProps, HTMLAttributes, InputHTMLAttributes, useEffect } from "react";
-import "./otp.css";
+import styles from "../otp.module.css";
 
 interface IProps {
     otp: string[];
@@ -53,7 +53,7 @@ const OtpFields = ({ otp, cb, count, onChange, containerAttr, inputAttr }: IProp
     }, [otp]);
 
     return (
-        <section className="container" {...containerAttr}>
+        <section className={styles["container"]} {...containerAttr}>
             {new Array(Math.round(count)).fill("").map((e, i) => (
                 <input
                     style={{
@@ -66,7 +66,7 @@ const OtpFields = ({ otp, cb, count, onChange, containerAttr, inputAttr }: IProp
                     onFocus={(e) => handleOnFocus(e)}
                     onKeyUp={(e) => handleKeyUp(e, i)}
                     maxLength={1}
-                    className="fields"
+                    className={styles["fields"]}
                     {...inputAttr}
                 />
             ))}
