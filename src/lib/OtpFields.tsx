@@ -17,6 +17,7 @@ const OtpFields = ({ otp, cb, count, onChange, containerAttr, inputAttr }: IProp
         const ele = e.target as HTMLInputElement;
         const prevSib = ele.previousSibling as HTMLInputElement;
         const nextSib = ele.nextSibling as HTMLInputElement;
+        const value = ele.value;
 
         const arr = [...otp];
 
@@ -34,6 +35,7 @@ const OtpFields = ({ otp, cb, count, onChange, containerAttr, inputAttr }: IProp
             if (nextSib === null) return;
             nextSib.focus();
         } else {
+            if (value === "" || value === undefined || value === null) return;
             arr[index] = ele.value;
             onChange?.(arr, index);
 
