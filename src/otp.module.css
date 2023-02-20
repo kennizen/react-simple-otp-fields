@@ -4,10 +4,5 @@
 }
 
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
     column-gap: 0.5rem;
-    width: min-content;
-    flex: 0;
 }
