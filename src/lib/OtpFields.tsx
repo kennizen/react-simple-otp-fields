@@ -2,27 +2,62 @@ import { DetailedHTMLProps, HTMLAttributes, InputHTMLAttributes, useEffect } fro
 import styles from "./otp.module.css";
 
 interface IProps {
+    /**
+     * Otp state that stores the input values in an array of strings
+     */
     otp: string[];
+    /**
+     * Number of input fields
+     * @default 1
+     */
     length: number;
+    /**
+     * Executes automatically after all the input fields are populated
+     * @param args
+     * @returns
+     */
     onComplete?: (...args: any[]) => void;
+    /**
+     * Executes after every input change. The populated inputs as an array
+     * of strings and the index of the changed input, are provided in the arguments.
+     * @param val
+     * @param index
+     * @returns
+     */
     onChange: (val: string[], index?: number) => void;
     containerAttr?: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+    /**
+     * The classnames for the container of the inputs.
+     * @example
+     * containerClasses="class1 class2 ..."
+     */
     containerClasses?: string;
     inputAttr?: DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+    /**
+     * The classnames for the input.
+     * @example
+     * inputClasses="class1 class2 ..."
+     */
     inputClasses?: string;
 }
 
 export const OtpFields = ({
     otp,
     onComplete,
-    length,
+    length = 1,
     onChange,
     containerAttr,
     inputAttr,
     containerClasses,
     inputClasses,
 }: IProps) => {
-    // functions
+    /**
+     * Function to handle the main logic for backspace character deletion, right movement,
+     * left movement and to focus onto the next input
+     * @param e
+     * @param index
+     * @returns
+     */
     function handleKeyUp(e: React.KeyboardEvent<HTMLInputElement>, index: number) {
         const key = e.key;
         const ele = e.target as HTMLInputElement;
@@ -56,6 +91,10 @@ export const OtpFields = ({
         }
     }
 
+    /**
+     * Function to select the input value everytime an input is focused
+     * @param e
+     */
     function handleOnFocus(e: React.FocusEvent<HTMLInputElement, Element>) {
         e.target.select();
     }

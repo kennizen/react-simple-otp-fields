@@ -1,21 +1,31 @@
 {
   "name": "react-simple-otp-fields",
   "version": "0.0.7",
-  "description": "A react component that provides customizable otp fields",
+  "description": "A react component that provides customizable otp input fields",
   "license": "MIT",
   "author": "Prachurjya Gogoi",
+  "main": "./dist/OtpFields.umd.js",
+  "types": "./dist/lib/OtpFields.d.ts",
+  "module": "./dist/OtpFields.es.js",
+  "style": "./dist/style.css",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kennizen/react-simple-otp-fields"
+  },
+  "homepage": "https://github.com/kennizen/react-simple-otp-fields",
   "keywords": [
     "react",
     "otp",
-    "otp fields"
+    "otp fields",
+    "simple otp",
+    "react otp",
+    "otp inputs",
+    "react otp inputs"
   ],
   "files": [
     "dist",
     "README.md"
   ],
-  "main": "./dist/OtpFields.umd.js",
-  "types": "./dist/lib/OtpFields.d.ts",
-  "module": "./dist/OtpFields.es.js",
   "exports": {
     ".": {
       "import": "./dist/OtpFields.es.js",
