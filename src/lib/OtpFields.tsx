@@ -13,10 +13,9 @@ interface IProps {
     length: number;
     /**
      * Executes automatically after all the input fields are populated
-     * @param args
      * @returns
      */
-    onComplete?: (...args: any[]) => void;
+    onComplete?: () => void;
     /**
      * Executes after every input change. The populated inputs as an array
      * of strings and the index of the changed input, are provided in the arguments.
@@ -67,27 +66,32 @@ export const OtpFields = ({
 
         const arr = [...otp];
 
-        if (key === "Backspace") {
-            if (index === otp.length - 1) arr.pop();
-            else if (arr[index] !== undefined) arr[index] = "";
+        switch (key) {
+            case "Backspace":
+                {
+                    if (index === otp.length - 1) arr.pop();
+                    else if (arr[index] !== undefined) arr[index] = "";
 
-            onChange(arr, index);
+                    onChange(arr, index);
 
-            if (prevSib !== null) prevSib.focus();
-        } else if (key === "ArrowLeft") {
-            if (prevSib === null) return;
-            prevSib.focus();
-        } else if (key === "ArrowRight") {
-            if (nextSib === null) return;
-            nextSib.focus();
-        } else {
-            if (value === "" || value === undefined || value === null) return;
+                    if (prevSib !== null) prevSib.focus();
+                }
+                break;
+            case "ArrowLeft":
+                if (prevSib !== null) prevSib.focus();
+                break;
+            case "ArrowRight":
+                if (nextSib !== null) nextSib.focus();
+                break;
+            default: {
+                if (value === "" || value === undefined || value === null) return;
 
-            arr[index] = value;
-            onChange(arr, index);
+                arr[index] = value;
+                onChange(arr, index);
 
-            if (nextSib === null) ele.blur();
-            else nextSib.focus();
+                if (nextSib === null) ele.blur();
+                else nextSib.focus();
+            }
         }
     }
 
@@ -101,7 +105,7 @@ export const OtpFields = ({
 
     // lifecycles
     useEffect(() => {
-        if (otp.some((ele) => ele === "" || ele === undefined)) return;
+        if (checkIfEmpty(otp)) return;
         if (otp.length < length) return;
         onComplete?.();
     }, [otp]);
@@ -141,3 +145,11 @@ export const OtpFields = ({
         </section>
     );
 };
+
+// utility fn
+function checkIfEmpty(arr: string[]) {
+    for (let index = 0; index < arr.length; index++) {
+        if (arr[index] === undefined || arr[index] === "") return true;
+    }
+    return false;
+}
