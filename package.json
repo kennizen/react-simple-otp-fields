@@ -1,6 +1,6 @@
 {
   "name": "react-simple-otp-fields",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A react component that provides customizable otp input fields",
   "license": "MIT",
   "author": "Prachurjya Gogoi",
