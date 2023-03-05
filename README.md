@@ -22,7 +22,14 @@ function App() {
     }
 
     return (
-        <OtpFields length={4} otp={otp} onChange={handleOnChange} onComplete={handleOnComplete} />
+        <OtpFields 
+            length={4} 
+            gap={8} 
+            otp={otp} 
+            onChange={handleOnChange} 
+            onComplete={handleOnComplete}
+            seperator={"-"}
+        />
     );
 }
 
@@ -42,11 +49,13 @@ import "react-simple-otp-fields/dist/style.css";
 
 | Name | Type | Description |
 |-----------------|-----------------|-----------------|
-| length | number | The number of input fields required, `default = 1`. |
+| length | number | The number of input fields required, `default = 2`. |
+| seperator | ReactNode | A react node placed between the input fields.
+| gap | `number \| string` | Defines the space between two adjacent input fields also takes into account the spacing for the seperator if a seperator is provided, `default = 8`.  |
 | onChange | `(val: string[], index?: number) => void` | Executes on every keystroke. Provides the updated OTP and an optional index number. |
 | otp | `string[]` | state variable passed onto the component props that wil reflect the latest change. |
 | onComplete | `() => void \| undefined` | Executes when passed, after all the input fields are filled. |
 | containerClasses | `string \| undefined` | classnames applied to the enclosing container of the input fields. |
 | inputClasses | `string \| undefined` | classnames applied to each of the input fields. |
 | containerAttr | DetailedHTMLProps<HTMLAttributes<HTMLDivElement>,  HTMLDivElement> \| undefined | gives access to all the attributes for the enclosing container of the input fields. |
-| inputAttr | DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> \| undefined | gives access to all the attributes of a input field.
+| inputAttr | DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> \| undefined | gives access to all the attributes of a input field. |
