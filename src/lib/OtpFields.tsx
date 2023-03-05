@@ -1,5 +1,5 @@
 import { DetailedHTMLProps, HTMLAttributes, InputHTMLAttributes, useEffect } from "react";
-import styles from "./otp.module.css";
+import styles from "../otp.module.css";
 
 interface IProps {
     /**
