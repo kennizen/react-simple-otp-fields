@@ -59,3 +59,8 @@ import "react-simple-otp-fields/dist/style.css";
 | inputClasses | `string \| undefined` | classnames applied to each of the input fields. |
 | containerAttr | DetailedHTMLProps<HTMLAttributes<HTMLDivElement>,  HTMLDivElement> \| undefined | gives access to all the attributes for the enclosing container of the input fields. |
 | inputAttr | DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> \| undefined | gives access to all the attributes of a input field. |
+
+
+# Sponsorship & support 
+
+### This package has been made in collaboration with @[TechVariable](https://www.linkedin.com/company/techvariable/).
