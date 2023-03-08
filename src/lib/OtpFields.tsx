@@ -60,6 +60,9 @@ export const OtpFields = ({
     seperator,
     gap = 8,
 }: IProps) => {
+    // Length for the minimum number of otp fields
+    const arrLength = length < 2 ? 2 : length;
+
     /**
      * Function to handle the main logic for backspace character deletion, right movement,
      * left movement and to focus onto the next input
@@ -119,7 +122,7 @@ export const OtpFields = ({
     // lifecycles
     useEffect(() => {
         if (checkIfEmpty(otp)) return;
-        if (otp.length < length) return;
+        if (otp.length < arrLength) return;
         onComplete?.();
     }, [otp]);
 
@@ -135,7 +138,7 @@ export const OtpFields = ({
             className={`${containerClasses === undefined ? "" : containerClasses}`}
             {...containerAttr}
         >
-            {new Array(Math.round(length)).fill("").map((e, i) => (
+            {new Array(Math.round(arrLength)).fill("").map((e, i) => (
                 <div
                     key={i}
                     style={{
@@ -160,7 +163,11 @@ export const OtpFields = ({
                         }`}
                         {...inputAttr}
                     />
-                    {seperator !== undefined && i < length - 1 ? <span>{seperator}</span> : <></>}
+                    {seperator !== undefined && i < arrLength - 1 ? (
+                        <span>{seperator}</span>
+                    ) : (
+                        <></>
+                    )}
                 </div>
             ))}
         </section>
