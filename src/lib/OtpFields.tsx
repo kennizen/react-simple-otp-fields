@@ -45,7 +45,7 @@ interface IProps {
     /**
      * Defines the space between two adjacent input fields also takes into account the spacing for the seperator if a seperator is provided.
      */
-    gap?: number;
+    gap?: number | string;
 }
 
 export const OtpFields = ({
