@@ -9,6 +9,7 @@ export default defineConfig({
             entry: path.resolve(__dirname, "src/lib/OtpFields.tsx"),
             name: "OtpFields",
             fileName: (format) => `OtpFields.${format}.js`,
+            formats: ["es"],
         },
         rollupOptions: {
             external: ["react", "react-dom"],

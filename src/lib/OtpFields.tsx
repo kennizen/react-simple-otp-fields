@@ -1,4 +1,9 @@
-import { DetailedHTMLProps, HTMLAttributes, InputHTMLAttributes, useEffect } from "react";
+import {
+    DetailedHTMLProps,
+    HTMLAttributes,
+    InputHTMLAttributes,
+    useEffect,
+} from "react";
 import styles from "../otp.module.css";
 
 interface IProps {
@@ -24,14 +29,20 @@ interface IProps {
      * @returns
      */
     onChange: (val: string[], index?: number) => void;
-    containerAttr?: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+    containerAttr?: DetailedHTMLProps<
+        HTMLAttributes<HTMLDivElement>,
+        HTMLDivElement
+    >;
     /**
      * The classnames for the container of the inputs.
      * @example
      * containerClasses="class1 class2 ..."
      */
     containerClasses?: string;
-    inputAttr?: DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+    inputAttr?: DetailedHTMLProps<
+        InputHTMLAttributes<HTMLInputElement>,
+        HTMLInputElement
+    >;
     /**
      * The classnames for the input.
      * @example
@@ -46,6 +57,10 @@ interface IProps {
      * Defines the space between two adjacent input fields also takes into account the spacing for the seperator if a seperator is provided.
      */
     gap: number | string;
+    /**
+     * Makes the first input field focus when the component is mounted.
+     */
+    autoFocus?: boolean;
 }
 
 export const OtpFields = ({
@@ -59,6 +74,7 @@ export const OtpFields = ({
     inputClasses,
     seperator,
     gap = 8,
+    autoFocus,
 }: IProps) => {
     // Length for the minimum number of otp fields
     const arrLength = length < 2 ? 2 : length;
@@ -70,7 +86,10 @@ export const OtpFields = ({
      * @param index
      * @returns
      */
-    function handleKeyUp(e: React.KeyboardEvent<HTMLDivElement>, index: number) {
+    function handleKeyUp(
+        e: React.KeyboardEvent<HTMLDivElement>,
+        index: number
+    ) {
         const key = e.key;
         const ele = e.currentTarget;
 
@@ -100,7 +119,8 @@ export const OtpFields = ({
                 if (nextSib !== null) nextInput.focus();
                 break;
             default: {
-                if (value === "" || value === undefined || value === null) return;
+                if (value === "" || value === undefined || value === null)
+                    return;
 
                 arr[index] = value;
                 onChange(arr, index);
@@ -135,7 +155,9 @@ export const OtpFields = ({
                 flex: "0",
                 columnGap: gap,
             }}
-            className={`${containerClasses === undefined ? "" : containerClasses}`}
+            className={`${
+                containerClasses === undefined ? "" : containerClasses
+            }`}
             {...containerAttr}
         >
             {new Array(Math.round(arrLength)).fill("").map((e, i) => (
@@ -156,7 +178,7 @@ export const OtpFields = ({
                         }}
                         defaultValue={otp[i] ?? ""}
                         type="text"
-                        autoFocus={i === 0}
+                        autoFocus={autoFocus && i === 0 ? true : false}
                         maxLength={1}
                         className={`${styles["fields"]} ${
                             inputClasses === undefined ? "" : inputClasses

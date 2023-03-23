@@ -1,7 +1,7 @@
-import OtpFields from "react-simple-otp-fields";
+import { OtpFields } from "./lib/OtpFields";
 
 function App() {
-    return <OtpFields count={4} otp={[]} onChange={() => {}} />;
+    return <OtpFields length={4} otp={[]} onChange={() => {}} gap={10} />;
 }
 
 export default App;
