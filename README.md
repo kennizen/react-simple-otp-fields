@@ -2,6 +2,14 @@
 
 > It is a minimal package that provides simple to use OTP input fields with most of the functionalities that are required. This package does not enforce any styles on the input fields.
 
+# Installation
+```
+npm install react-simple-otp-fields
+```
+
+### Demo / Playground
+Here is a link to the [playground/demo](https://react-simple-otp-fields-playground.netlify.app/) where you can experience the package and also try out the themes, as well as make your own.
+
 # Usage
 
 ```tsx
@@ -29,6 +37,9 @@ function App() {
             onChange={handleOnChange} 
             onComplete={handleOnComplete}
             seperator={"-"}
+            inputAttr={{
+                //input attributes
+            }}
         />
     );
 }
